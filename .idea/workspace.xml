@@ -4,20 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="932c1a92-7949-422e-8b6e-9326512c2fa1" name="Changes" comment="login flow">
-      <change afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/account/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/account/AccountBalance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/account/AccountService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/account/AccountType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/account/AccountsPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/util/Amount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/util/PageIndex.java" afterDir="false" />
+    <list default="true" id="932c1a92-7949-422e-8b6e-9326512c2fa1" name="Changes" comment="add account types">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/maven.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/maven.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/login/BaseLoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/util/BaseComdirectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/login/FinalizeLoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/login/FinalizeLoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/login/InitiateLoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/login/InitiateLoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/util/SimpleHttpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/util/SimpleHttpClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/eu/wuttke/comdirect/login/LoginServiceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/eu/wuttke/comdirect/login/LoginServiceIT.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680374786535</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add account types">
+      <created>1680546982810</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1680546982811</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -175,7 +171,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial sketch of API" />
     <MESSAGE value="login flow" />
-    <option name="LAST_COMMIT_MESSAGE" value="login flow" />
+    <MESSAGE value="add account types" />
+    <option name="LAST_COMMIT_MESSAGE" value="add account types" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
