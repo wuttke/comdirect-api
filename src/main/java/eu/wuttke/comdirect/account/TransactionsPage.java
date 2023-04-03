@@ -1,6 +1,6 @@
 package eu.wuttke.comdirect.account;
 
-import eu.wuttke.comdirect.util.PageIndex;
+import eu.wuttke.comdirect.value.PageIndex;
 
 import java.util.List;
 

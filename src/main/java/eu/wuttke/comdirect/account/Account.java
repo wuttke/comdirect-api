@@ -1,7 +1,7 @@
 package eu.wuttke.comdirect.account;
 
-import eu.wuttke.comdirect.util.Amount;
-import eu.wuttke.comdirect.util.CodedValue;
+import eu.wuttke.comdirect.value.Amount;
+import eu.wuttke.comdirect.value.CodedValue;
 
 public class Account {
     private String accountId;

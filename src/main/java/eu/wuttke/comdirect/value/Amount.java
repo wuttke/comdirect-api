@@ -1,4 +1,4 @@
-package eu.wuttke.comdirect.util;
+package eu.wuttke.comdirect.value;
 
 public class Amount {
     private double value;
