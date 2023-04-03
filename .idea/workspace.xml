@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="932c1a92-7949-422e-8b6e-9326512c2fa1" name="Changes" comment="data structures for transactions">
-      <change afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/account/BankContact.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/account/Transaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/account/TransactionAggregation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/account/TransactionsPage.java" afterDir="false" />
+    <list default="true" id="932c1a92-7949-422e-8b6e-9326512c2fa1" name="Changes" comment="refactor common value classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/account/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/account/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/account/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/account/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/account/AccountType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/util/CodedValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/login/FinalizeLoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/login/FinalizeLoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/login/InitiateLoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/login/InitiateLoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/util/BaseComdirectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/util/BaseComdirectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/eu/wuttke/comdirect/login/LoginServiceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/eu/wuttke/comdirect/login/LoginServiceIT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +74,7 @@
       <module name="comdirect-rest-api" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="eu.wuttke.comdirect.util.*" />
+          <option name="PATTERN" value="eu.wuttke.comdirect.value.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -106,7 +96,7 @@
       <module name="comdirect-rest-api" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="eu.wuttke.comdirect.util.*" />
+          <option name="PATTERN" value="eu.wuttke.comdirect.value.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -172,7 +162,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680547408301</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="data structures for transactions">
+      <created>1680548804360</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680548804360</updated>
+    </task>
+    <task id="LOCAL-00006" summary="refactor common value classes">
+      <created>1680548846389</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680548846389</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -192,7 +196,8 @@
     <MESSAGE value="add account types" />
     <MESSAGE value="CI: comment-out step" />
     <MESSAGE value="data structures for transactions" />
-    <option name="LAST_COMMIT_MESSAGE" value="data structures for transactions" />
+    <MESSAGE value="refactor common value classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor common value classes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
