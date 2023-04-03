@@ -1,5 +1,7 @@
 # Comdirect REST API
 
+![Maven Build Badge](https://github.com/github/docs/actions/workflows/maven.yml/badge.svg)
+
 ## Motivation
 
 There are (at least) two great Comdirect REST API libraries:
