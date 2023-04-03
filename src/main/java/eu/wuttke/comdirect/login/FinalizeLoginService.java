@@ -2,12 +2,17 @@ package eu.wuttke.comdirect.login;
 
 import eu.wuttke.comdirect.util.BaseComdirectService;
 import eu.wuttke.comdirect.util.ComdirectException;
+import eu.wuttke.comdirect.util.SimpleHttpClient;
 
 import java.io.IOException;
 import java.net.http.HttpResponse;
 import java.util.Map;
 
 public class FinalizeLoginService extends BaseComdirectService {
+
+    public FinalizeLoginService(SimpleHttpClient httpClient) {
+        super(httpClient);
+    }
 
     public ComdirectSession finalizeLogin(
             LoginCredentials credentials,

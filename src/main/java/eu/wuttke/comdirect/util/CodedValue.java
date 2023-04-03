@@ -1,6 +1,6 @@
-package eu.wuttke.comdirect.account;
+package eu.wuttke.comdirect.util;
 
-public class AccountType {
+public class CodedValue {
 
     private String key;
     private String text;

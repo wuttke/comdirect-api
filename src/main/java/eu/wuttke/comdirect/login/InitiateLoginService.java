@@ -3,6 +3,7 @@ package eu.wuttke.comdirect.login;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import eu.wuttke.comdirect.util.BaseComdirectService;
 import eu.wuttke.comdirect.util.ComdirectException;
+import eu.wuttke.comdirect.util.SimpleHttpClient;
 
 import java.io.IOException;
 import java.net.http.HttpResponse;
@@ -10,6 +11,10 @@ import java.util.Map;
 import java.util.UUID;
 
 public class InitiateLoginService extends BaseComdirectService {
+
+    public InitiateLoginService(SimpleHttpClient httpClient) {
+        super(httpClient);
+    }
 
     public InitiateLoginResult initiateLogin(LoginCredentials credentials) throws ComdirectException {
         Tokens tokens = postCredentialsForTokens(credentials);

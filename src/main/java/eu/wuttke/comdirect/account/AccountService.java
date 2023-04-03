@@ -3,12 +3,16 @@ package eu.wuttke.comdirect.account;
 import eu.wuttke.comdirect.login.ComdirectSession;
 import eu.wuttke.comdirect.util.BaseComdirectService;
 import eu.wuttke.comdirect.util.ComdirectException;
+import eu.wuttke.comdirect.util.SimpleHttpClient;
 
 import java.io.IOException;
 import java.net.http.HttpResponse;
-import java.util.List;
 
 public class AccountService extends BaseComdirectService {
+
+    public AccountService(SimpleHttpClient httpClient) {
+        super(httpClient);
+    }
 
     public AccountsPage getAccounts(ComdirectSession session) throws ComdirectException {
         try {
@@ -24,18 +28,17 @@ public class AccountService extends BaseComdirectService {
         }
     }
 
-    public List<Object> getTransactions(ComdirectSession session, String accountId) throws ComdirectException {
+    public TransactionsPage getTransactions(ComdirectSession session, String accountId) throws ComdirectException {
         try {
             HttpResponse<String> response = getWithTokens(session,
                     comdirectApiEndpoint +
-                            "/api/banking/v1/accounts/" + accountId +
-                            "/transactions?transactionDirection=CREDIT_AND_DEBIT&transactionState=BOTH");
+                            "/api/banking/v1/accounts/" + accountId + "/transactions" +
+                            "?transactionDirection=CREDIT_AND_DEBIT&transactionState=BOTH&paging-first=0&paging-count=100");
             if (response.statusCode() != 200)
                 throw new ComdirectException("error listing transactions", response.statusCode(), response.body());
-            // TODO parse accounts
-            return null;
+            return objectMapper.readerFor(TransactionsPage.class).readValue(response.body());
         } catch (IOException e) {
-            throw new ComdirectException("unable to list accounts", 0, e.getMessage());
+            throw new ComdirectException("unable to list transactions", 0, e.getMessage());
         }
     }
 

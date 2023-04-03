@@ -1,7 +1,7 @@
 package eu.wuttke.comdirect.util;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import eu.wuttke.comdirect.util.SimpleHttpClient;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,8 +9,14 @@ import java.util.Date;
 public abstract class BaseComdirectService {
 
     protected String comdirectApiEndpoint = "https://api.comdirect.de";
-    protected SimpleHttpClient httpClient = new SimpleHttpClient();
-    protected ObjectMapper objectMapper = new ObjectMapper();
+    protected SimpleHttpClient httpClient;
+    protected ObjectMapper objectMapper;
+
+    protected BaseComdirectService(SimpleHttpClient httpClient) {
+        this.httpClient = httpClient;
+        this.objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
 
     protected String buildRequestInfoHeader(String sessionId) {
         String requestId = generateTimestamp();

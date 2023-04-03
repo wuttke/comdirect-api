@@ -1,13 +1,14 @@
 package eu.wuttke.comdirect.account;
 
 import eu.wuttke.comdirect.util.Amount;
+import eu.wuttke.comdirect.util.CodedValue;
 
 public class Account {
     private String accountId;
     private String accountDisplayId;
     private String currency;
     private String clientId;
-    private AccountType accountType;
+    private CodedValue accountType;
     private String iban;
     private String bic;
     private Amount creditLimit;
@@ -44,11 +45,11 @@ public class Account {
         this.clientId = clientId;
     }
 
-    public AccountType getAccountType() {
+    public CodedValue getAccountType() {
         return accountType;
     }
 
-    public void setAccountType(AccountType accountType) {
+    public void setAccountType(CodedValue accountType) {
         this.accountType = accountType;
     }
 
