@@ -1,4 +1,4 @@
-package eu.wuttke.comdirect.login;
+package eu.wuttke.comdirect.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import eu.wuttke.comdirect.util.SimpleHttpClient;
@@ -6,7 +6,7 @@ import eu.wuttke.comdirect.util.SimpleHttpClient;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public abstract class BaseLoginService {
+public abstract class BaseComdirectService {
 
     protected String comdirectApiEndpoint = "https://api.comdirect.de";
     protected SimpleHttpClient httpClient = new SimpleHttpClient();

@@ -24,7 +24,7 @@ public class SimpleHttpClient {
 
     public HttpResponse<String> patchForString(String url, String[] headers, String bodyStr)
             throws IOException {
-        return performRequestForString("PATH", url, headers, bodyStr);
+        return performRequestForString("PATCH", url, headers, bodyStr);
     }
 
     private HttpResponse<String> performRequestForString(
