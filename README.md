@@ -4,15 +4,16 @@
 
 ## Motivation
 
-There are (at least) two great Comdirect REST API libraries:
+There are (at least) three great Comdirect REST API libraries:
 
-* https://github.com/jsattler/go-comdirect
-* https://github.com/keisentraut/python-comdirect-api
+* https://github.com/jsattler/go-comdirect (Go)
+* https://github.com/keisentraut/python-comdirect-api (Python)
+* https://github.com/d-oit/Doit.Comdirect.Rest.Api (C#/.NET)
 
 These libraries heavily inspired the classes in this repository.
 Why another library?
 
-* I wanted to integrate the API in a Java application and did not want to bundle the app with another package.
+* I wanted to integrate the API in a Java application and did not want to bundle the app with another "foreign language" package.
 * I did not like to "callback" architecture for the challenge/response mechanism, but rather wanted to divide the login process into two stages.
 
 ## Usage
@@ -47,7 +48,18 @@ The session is then required for all other API calls.
 
 ### Retrieve accounts and balances
 
+Acquire a list of accounts.
+
+    AccountService service3 = new AccountService(myClient);
+    AccountsPage accounts = service3.getAccounts(session);
+    assertTrue(accounts.getValues().size() > 0);
+
 ### Retrieve account transactions
+
+Read transactions for a given account.
+
+    TransactionsPage transactions = service3.getTransactions(session, accounts.getValues().get(0).getAccountId());
+    assertTrue(transactions.getValues().size() > 0);
 
 ## Contributing
 
