@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="932c1a92-7949-422e-8b6e-9326512c2fa1" name="Changes" comment="correct badge generation parameters">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/maven.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/maven.yml" afterDir="false" />
+    <list default="true" id="932c1a92-7949-422e-8b6e-9326512c2fa1" name="Changes" comment="add another test case">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/cli/ComdirectTransactionsApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/cli/ComdirectTransactionsApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/eu/wuttke/comdirect/account/AccountServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/eu/wuttke/comdirect/account/AccountServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +67,7 @@
       <recent name="eu.wuttke.comdirect.login" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AccountServiceTest.getAccounts">
+  <component name="RunManager" selected="JUnit.AccountServiceTest">
     <configuration name="ComdirectTransactionsApp" type="Application" factoryName="Application" nameIsGenerated="true">
       <envs>
         <env name="clientId" value="User_CDBA8404E3814B98AD0F8FA61240C922" />
@@ -81,6 +83,21 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="comdirect-rest-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="eu.wuttke.comdirect.account.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="eu.wuttke.comdirect.account" />
+      <option name="MAIN_CLASS_NAME" value="eu.wuttke.comdirect.account.AccountServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -147,12 +164,14 @@
     </configuration>
     <list>
       <item itemvalue="Application.ComdirectTransactionsApp" />
+      <item itemvalue="JUnit.AccountServiceTest" />
       <item itemvalue="JUnit.AccountServiceTest.getAccounts" />
       <item itemvalue="JUnit.ComdirectTransactionsApp" />
       <item itemvalue="JUnit.ComdirectTransactionsApp.testLogin" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AccountServiceTest" />
         <item itemvalue="JUnit.AccountServiceTest.getAccounts" />
         <item itemvalue="JUnit.ComdirectTransactionsApp" />
         <item itemvalue="JUnit.ComdirectTransactionsApp.testLogin" />
@@ -224,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680708560548</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add write permission">
+      <created>1680708814479</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1680708814479</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -247,7 +273,9 @@
     <MESSAGE value="refactor common value classes" />
     <MESSAGE value="refactor http client, add unit test" />
     <MESSAGE value="correct badge generation parameters" />
-    <option name="LAST_COMMIT_MESSAGE" value="correct badge generation parameters" />
+    <MESSAGE value="add write permission" />
+    <MESSAGE value="add another test case" />
+    <option name="LAST_COMMIT_MESSAGE" value="add another test case" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

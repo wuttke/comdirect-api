@@ -35,7 +35,6 @@ class ComdirectTransactionsApp {
 
         AccountService service3 = new AccountService(myClient);
         AccountsPage accounts = service3.getAccounts(session);
-        new ObjectMapper().writerFor(AccountsPage.class).writeValue(System.out, accounts);
 
         TransactionsPage transactions = service3.getTransactions(session, accounts.getValues().get(0).getAccountId());
         new ObjectMapper().writerFor(TransactionsPage.class).writeValue(System.out, transactions);
