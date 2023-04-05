@@ -1,6 +1,7 @@
 # Comdirect REST API
 
 ![Maven Build Badge](https://github.com/wuttke/comdirect-api/actions/workflows/maven.yml/badge.svg)
+![JaCoCo Unit-test Coverage](https://wuttke.github.io/comdirect-api/badges/jacoco.svg)
 
 ## Motivation
 
