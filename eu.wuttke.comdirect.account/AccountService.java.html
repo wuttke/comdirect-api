@@ -30,13 +30,13 @@ public class AccountService extends BaseComdirectService {
 
     public TransactionsPage getTransactions(ComdirectSession session, String accountId) throws ComdirectException {
         try {
-<span class="nc" id="L33">            SimpleHttpResponse response = getWithTokens(session,</span>
+<span class="fc" id="L33">            SimpleHttpResponse response = getWithTokens(session,</span>
                     comdirectApiEndpoint +
                             &quot;/api/banking/v1/accounts/&quot; + accountId + &quot;/transactions&quot; +
                             &quot;?transactionDirection=CREDIT_AND_DEBIT&amp;transactionState=BOTH&amp;paging-first=0&amp;paging-count=100&quot;);
-<span class="nc bnc" id="L37" title="All 2 branches missed.">            if (response.getStatusCode() != 200)</span>
+<span class="pc bpc" id="L37" title="1 of 2 branches missed.">            if (response.getStatusCode() != 200)</span>
 <span class="nc" id="L38">                throw new ComdirectException(&quot;error listing transactions&quot;, response.getStatusCode(), response.getBody());</span>
-<span class="nc" id="L39">            return objectMapper.readerFor(TransactionsPage.class).readValue(response.getBody());</span>
+<span class="fc" id="L39">            return objectMapper.readerFor(TransactionsPage.class).readValue(response.getBody());</span>
 <span class="nc" id="L40">        } catch (IOException e) {</span>
 <span class="nc" id="L41">            throw new ComdirectException(&quot;unable to list transactions&quot;, 0, e.getMessage());</span>
         }

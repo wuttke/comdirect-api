@@ -35,11 +35,10 @@ import java.io.InputStreamReader;
 
 <span class="nc" id="L36">        AccountService service3 = new AccountService(myClient);</span>
 <span class="nc" id="L37">        AccountsPage accounts = service3.getAccounts(session);</span>
-<span class="nc" id="L38">        new ObjectMapper().writerFor(AccountsPage.class).writeValue(System.out, accounts);</span>
 
-<span class="nc" id="L40">        TransactionsPage transactions = service3.getTransactions(session, accounts.getValues().get(0).getAccountId());</span>
-<span class="nc" id="L41">        new ObjectMapper().writerFor(TransactionsPage.class).writeValue(System.out, transactions);</span>
-<span class="nc" id="L42">    }</span>
+<span class="nc" id="L39">        TransactionsPage transactions = service3.getTransactions(session, accounts.getValues().get(0).getAccountId());</span>
+<span class="nc" id="L40">        new ObjectMapper().writerFor(TransactionsPage.class).writeValue(System.out, transactions);</span>
+<span class="nc" id="L41">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
