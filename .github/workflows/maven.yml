@@ -29,14 +29,14 @@ jobs:
       if: ${{ github.ref == 'refs/heads/main' }}
       uses: cicirello/jacoco-badge-generator@v2
       with:
-        jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv
-        badges-directory: build/reports/jacoco/test/html/badges
+        jacoco-csv-file: target/site/jacoco/jacoco.csv
+        badges-directory: target/site/jacoco/badges
 
     - name: Publish coverage report to GitHub Pages
       if: ${{ github.ref == 'refs/heads/main' }}
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        folder: build/reports/jacoco/test/html
+        folder: target/site/jacoco
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     #- name: Update dependency graph
