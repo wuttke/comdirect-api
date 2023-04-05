@@ -51,7 +51,7 @@ class AccountServiceTest {
         assertEquals(3, page.getValues().size());
         assertEquals("Accept", headers.getValue()[0]);
         assertEquals("application/json", headers.getValue()[1]);
-        assertEquals("Authorisation", headers.getValue()[2]);
+        assertEquals("Authorization", headers.getValue()[2]);
         assertEquals("Bearer " + session.getTokens().getAccessToken(), headers.getValue()[3]);
         assertEquals("x-http-request-info", headers.getValue()[4]);
     }
