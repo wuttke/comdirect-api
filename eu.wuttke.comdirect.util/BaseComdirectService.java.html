@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BaseComdirectService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">comdirect-rest-api</a> &gt; <a href="index.source.html" class="el_package">eu.wuttke.comdirect.util</a> &gt; <span class="el_source">BaseComdirectService.java</span></div><h1>BaseComdirectService.java</h1><pre class="source lang-java linenums">package eu.wuttke.comdirect.util;
+
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public abstract class BaseComdirectService {
+
+<span class="fc" id="L11">    protected String comdirectApiEndpoint = &quot;https://api.comdirect.de&quot;;</span>
+    protected SimpleHttpClient httpClient;
+    protected ObjectMapper objectMapper;
+
+<span class="fc" id="L15">    protected BaseComdirectService(SimpleHttpClient httpClient) {</span>
+<span class="fc" id="L16">        this.httpClient = httpClient;</span>
+<span class="fc" id="L17">        this.objectMapper = new ObjectMapper();</span>
+<span class="fc" id="L18">        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);</span>
+<span class="fc" id="L19">    }</span>
+
+    protected String buildRequestInfoHeader(String sessionId) {
+<span class="fc" id="L22">        String requestId = generateTimestamp();</span>
+<span class="fc" id="L23">        return &quot;{\&quot;clientRequestId\&quot;:{&quot; +</span>
+                &quot;\&quot;sessionId\&quot;:\&quot;&quot; + sessionId + &quot;\&quot;,&quot; +
+                &quot;\&quot;requestId\&quot;:\&quot;&quot; + requestId + &quot;\&quot;}}&quot;;
+    }
+
+    protected Date calculateExpiry(Integer expiresIn) {
+<span class="nc bnc" id="L29" title="All 2 branches missed.">        if (expiresIn == null)</span>
+<span class="nc" id="L30">            return null;</span>
+<span class="nc" id="L31">        Date now = new Date();</span>
+<span class="nc" id="L32">        return new Date(now.getTime() + expiresIn * 1000L);</span>
+    }
+
+    private String generateTimestamp() {
+<span class="fc" id="L36">        Date now = new Date();</span>
+<span class="fc" id="L37">        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(&quot;yyyyMMddHHmmssSSS&quot;);</span>
+<span class="fc" id="L38">        return simpleDateFormat.format(now);</span>
+    }
+
+    protected static final String ACCEPT_HEADER = &quot;Accept&quot;;
+    protected static final String AUTHORIZATION_HEADER = &quot;Authorization&quot;;
+    protected static final String CONTENT_TYPE_HEADER = &quot;Content-Type&quot;;
+    protected static final String APPLICATION_JSON = &quot;application/json&quot;;
+    protected static final String BEARER = &quot;Bearer &quot;;
+    protected static final String ACCESS_TOKEN = &quot;access_token&quot;;
+    protected static final String REFRESH_TOKEN = &quot;refresh_token&quot;;
+    protected static final String EXPIRES_IN = &quot;expires_in&quot;;
+    protected static final String APPLICATION_X_WWW_FORM_URLENCODED = &quot;application/x-www-form-urlencoded&quot;;
+    protected static final String X_HTTP_REQUEST_INFO_HEADER = &quot;x-http-request-info&quot;;
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

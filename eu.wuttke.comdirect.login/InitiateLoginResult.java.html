@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InitiateLoginResult.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">comdirect-rest-api</a> &gt; <a href="index.source.html" class="el_package">eu.wuttke.comdirect.login</a> &gt; <span class="el_source">InitiateLoginResult.java</span></div><h1>InitiateLoginResult.java</h1><pre class="source lang-java linenums">package eu.wuttke.comdirect.login;
+
+public class InitiateLoginResult {
+
+    /**
+     * Type of the challenge (e.g., push TAN, photo TAN)
+     */
+    private ChallengeType challengeType;
+
+    /**
+     * ID of the challenge (needs to be passed with the
+     * actual TAN)
+     */
+    private String challengeId;
+
+    /**
+     * Parameter for the challenge, e.g. base64-encoded PNG for photo TAN
+     */
+    private String challenge;
+
+    /**
+     * OAuth tokens (access, refresh token); with expiry
+     */
+    private Tokens tokens;
+
+    /**
+     * Session ID
+     */
+    private String sessionId;
+
+<span class="nc" id="L31">    public InitiateLoginResult(ChallengeType challengeType, String challengeId, String challenge, Tokens tokens, String sessionId) {</span>
+<span class="nc" id="L32">        this.challengeType = challengeType;</span>
+<span class="nc" id="L33">        this.challengeId = challengeId;</span>
+<span class="nc" id="L34">        this.challenge = challenge;</span>
+<span class="nc" id="L35">        this.tokens = tokens;</span>
+<span class="nc" id="L36">        this.sessionId = sessionId;</span>
+<span class="nc" id="L37">    }</span>
+
+    public ChallengeType getChallengeType() {
+<span class="nc" id="L40">        return challengeType;</span>
+    }
+
+    public String getChallengeId() {
+<span class="nc" id="L44">        return challengeId;</span>
+    }
+
+    public String getChallenge() {
+<span class="nc" id="L48">        return challenge;</span>
+    }
+
+    public Tokens getTokens() {
+<span class="nc" id="L52">        return tokens;</span>
+    }
+
+    public String getSessionId() {
+<span class="nc" id="L56">        return sessionId;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Transaction.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">comdirect-rest-api</a> &gt; <a href="index.source.html" class="el_package">eu.wuttke.comdirect.account</a> &gt; <span class="el_source">Transaction.java</span></div><h1>Transaction.java</h1><pre class="source lang-java linenums">package eu.wuttke.comdirect.account;
+
+import eu.wuttke.comdirect.value.Amount;
+import eu.wuttke.comdirect.value.CodedValue;
+
+<span class="nc" id="L6">public class Transaction {</span>
+
+    private String reference;
+    private String bookingStatus;
+    private String bookingDate;
+    private Amount amount;
+    private BankContact remitter;
+    private BankContact deptor;
+    private BankContact creditor;
+    private String valutaDate;
+    private String directDebitCreditorId;
+    private String directDebitMandateId;
+    private String endToEndReference;
+    private boolean newTransaction;
+    private String remittanceInfo;
+    private CodedValue transactionType;
+
+    public String getReference() {
+<span class="nc" id="L24">        return reference;</span>
+    }
+
+    public void setReference(String reference) {
+<span class="nc" id="L28">        this.reference = reference;</span>
+<span class="nc" id="L29">    }</span>
+
+    public String getBookingStatus() {
+<span class="nc" id="L32">        return bookingStatus;</span>
+    }
+
+    public void setBookingStatus(String bookingStatus) {
+<span class="nc" id="L36">        this.bookingStatus = bookingStatus;</span>
+<span class="nc" id="L37">    }</span>
+
+    public String getBookingDate() {
+<span class="nc" id="L40">        return bookingDate;</span>
+    }
+
+    public void setBookingDate(String bookingDate) {
+<span class="nc" id="L44">        this.bookingDate = bookingDate;</span>
+<span class="nc" id="L45">    }</span>
+
+    public Amount getAmount() {
+<span class="nc" id="L48">        return amount;</span>
+    }
+
+    public void setAmount(Amount amount) {
+<span class="nc" id="L52">        this.amount = amount;</span>
+<span class="nc" id="L53">    }</span>
+
+    public BankContact getRemitter() {
+<span class="nc" id="L56">        return remitter;</span>
+    }
+
+    public void setRemitter(BankContact remitter) {
+<span class="nc" id="L60">        this.remitter = remitter;</span>
+<span class="nc" id="L61">    }</span>
+
+    public BankContact getDeptor() {
+<span class="nc" id="L64">        return deptor;</span>
+    }
+
+    public void setDeptor(BankContact deptor) {
+<span class="nc" id="L68">        this.deptor = deptor;</span>
+<span class="nc" id="L69">    }</span>
+
+    public BankContact getCreditor() {
+<span class="nc" id="L72">        return creditor;</span>
+    }
+
+    public void setCreditor(BankContact creditor) {
+<span class="nc" id="L76">        this.creditor = creditor;</span>
+<span class="nc" id="L77">    }</span>
+
+    public String getValutaDate() {
+<span class="nc" id="L80">        return valutaDate;</span>
+    }
+
+    public void setValutaDate(String valutaDate) {
+<span class="nc" id="L84">        this.valutaDate = valutaDate;</span>
+<span class="nc" id="L85">    }</span>
+
+    public String getDirectDebitCreditorId() {
+<span class="nc" id="L88">        return directDebitCreditorId;</span>
+    }
+
+    public void setDirectDebitCreditorId(String directDebitCreditorId) {
+<span class="nc" id="L92">        this.directDebitCreditorId = directDebitCreditorId;</span>
+<span class="nc" id="L93">    }</span>
+
+    public String getDirectDebitMandateId() {
+<span class="nc" id="L96">        return directDebitMandateId;</span>
+    }
+
+    public void setDirectDebitMandateId(String directDebitMandateId) {
+<span class="nc" id="L100">        this.directDebitMandateId = directDebitMandateId;</span>
+<span class="nc" id="L101">    }</span>
+
+    public String getEndToEndReference() {
+<span class="nc" id="L104">        return endToEndReference;</span>
+    }
+
+    public void setEndToEndReference(String endToEndReference) {
+<span class="nc" id="L108">        this.endToEndReference = endToEndReference;</span>
+<span class="nc" id="L109">    }</span>
+
+    public boolean isNewTransaction() {
+<span class="nc" id="L112">        return newTransaction;</span>
+    }
+
+    public void setNewTransaction(boolean newTransaction) {
+<span class="nc" id="L116">        this.newTransaction = newTransaction;</span>
+<span class="nc" id="L117">    }</span>
+
+    public String getRemittanceInfo() {
+<span class="nc" id="L120">        return remittanceInfo;</span>
+    }
+
+    public void setRemittanceInfo(String remittanceInfo) {
+<span class="nc" id="L124">        this.remittanceInfo = remittanceInfo;</span>
+<span class="nc" id="L125">    }</span>
+
+    public CodedValue getTransactionType() {
+<span class="nc" id="L128">        return transactionType;</span>
+    }
+
+    public void setTransactionType(CodedValue transactionType) {
+<span class="nc" id="L132">        this.transactionType = transactionType;</span>
+<span class="nc" id="L133">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

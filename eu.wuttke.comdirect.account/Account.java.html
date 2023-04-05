@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Account.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">comdirect-rest-api</a> &gt; <a href="index.source.html" class="el_package">eu.wuttke.comdirect.account</a> &gt; <span class="el_source">Account.java</span></div><h1>Account.java</h1><pre class="source lang-java linenums">package eu.wuttke.comdirect.account;
+
+import eu.wuttke.comdirect.value.Amount;
+import eu.wuttke.comdirect.value.CodedValue;
+
+<span class="fc" id="L6">public class Account {</span>
+    private String accountId;
+    private String accountDisplayId;
+    private String currency;
+    private String clientId;
+    private CodedValue accountType;
+    private String iban;
+    private String bic;
+    private Amount creditLimit;
+
+    public String getAccountId() {
+<span class="nc" id="L17">        return accountId;</span>
+    }
+
+    public void setAccountId(String accountId) {
+<span class="fc" id="L21">        this.accountId = accountId;</span>
+<span class="fc" id="L22">    }</span>
+
+    public String getAccountDisplayId() {
+<span class="nc" id="L25">        return accountDisplayId;</span>
+    }
+
+    public void setAccountDisplayId(String accountDisplayId) {
+<span class="fc" id="L29">        this.accountDisplayId = accountDisplayId;</span>
+<span class="fc" id="L30">    }</span>
+
+    public String getCurrency() {
+<span class="nc" id="L33">        return currency;</span>
+    }
+
+    public void setCurrency(String currency) {
+<span class="fc" id="L37">        this.currency = currency;</span>
+<span class="fc" id="L38">    }</span>
+
+    public String getClientId() {
+<span class="nc" id="L41">        return clientId;</span>
+    }
+
+    public void setClientId(String clientId) {
+<span class="fc" id="L45">        this.clientId = clientId;</span>
+<span class="fc" id="L46">    }</span>
+
+    public CodedValue getAccountType() {
+<span class="nc" id="L49">        return accountType;</span>
+    }
+
+    public void setAccountType(CodedValue accountType) {
+<span class="fc" id="L53">        this.accountType = accountType;</span>
+<span class="fc" id="L54">    }</span>
+
+    public String getIban() {
+<span class="nc" id="L57">        return iban;</span>
+    }
+
+    public void setIban(String iban) {
+<span class="fc" id="L61">        this.iban = iban;</span>
+<span class="fc" id="L62">    }</span>
+
+    public String getBic() {
+<span class="nc" id="L65">        return bic;</span>
+    }
+
+    public void setBic(String bic) {
+<span class="fc" id="L69">        this.bic = bic;</span>
+<span class="fc" id="L70">    }</span>
+
+    public Amount getCreditLimit() {
+<span class="nc" id="L73">        return creditLimit;</span>
+    }
+
+    public void setCreditLimit(Amount creditLimit) {
+<span class="fc" id="L77">        this.creditLimit = creditLimit;</span>
+<span class="fc" id="L78">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

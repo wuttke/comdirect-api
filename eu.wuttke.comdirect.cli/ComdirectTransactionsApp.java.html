@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ComdirectTransactionsApp.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">comdirect-rest-api</a> &gt; <a href="index.source.html" class="el_package">eu.wuttke.comdirect.cli</a> &gt; <span class="el_source">ComdirectTransactionsApp.java</span></div><h1>ComdirectTransactionsApp.java</h1><pre class="source lang-java linenums">package eu.wuttke.comdirect.cli;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import eu.wuttke.comdirect.account.AccountService;
+import eu.wuttke.comdirect.account.AccountsPage;
+import eu.wuttke.comdirect.account.TransactionsPage;
+import eu.wuttke.comdirect.login.*;
+import eu.wuttke.comdirect.util.ComdirectException;
+import eu.wuttke.comdirect.util.SimpleHttpClient;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+<span class="nc" id="L15">class ComdirectTransactionsApp {</span>
+
+    public static void main(String[] args) throws IOException, ComdirectException {
+<span class="nc" id="L18">        SimpleHttpClient myClient = new SimpleHttpClient();</span>
+
+<span class="nc" id="L20">        LoginCredentials credentials = new LoginCredentials(</span>
+<span class="nc" id="L21">                System.getenv(&quot;clientId&quot;),</span>
+<span class="nc" id="L22">                System.getenv(&quot;clientSecret&quot;),</span>
+<span class="nc" id="L23">                System.getenv(&quot;userName&quot;),</span>
+<span class="nc" id="L24">                System.getenv(&quot;password&quot;)</span>
+        );
+
+<span class="nc" id="L27">        InitiateLoginService service1 = new InitiateLoginService(myClient);</span>
+<span class="nc" id="L28">        InitiateLoginResult result1 = service1.initiateLogin(credentials);</span>
+
+<span class="nc" id="L30">        System.out.println(&quot;Press ENTER after accepting the Push TAN&quot;);</span>
+<span class="nc" id="L31">        new BufferedReader(new InputStreamReader(System.in)).readLine();</span>
+
+<span class="nc" id="L33">        FinalizeLoginService service2 = new FinalizeLoginService(myClient);</span>
+<span class="nc" id="L34">        ComdirectSession session = service2.finalizeLogin(credentials, result1, &quot;&quot;);</span>
+
+<span class="nc" id="L36">        AccountService service3 = new AccountService(myClient);</span>
+<span class="nc" id="L37">        AccountsPage accounts = service3.getAccounts(session);</span>
+<span class="nc" id="L38">        new ObjectMapper().writerFor(AccountsPage.class).writeValue(System.out, accounts);</span>
+
+<span class="nc" id="L40">        TransactionsPage transactions = service3.getTransactions(session, accounts.getValues().get(0).getAccountId());</span>
+<span class="nc" id="L41">        new ObjectMapper().writerFor(TransactionsPage.class).writeValue(System.out, transactions);</span>
+<span class="nc" id="L42">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

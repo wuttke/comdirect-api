@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AccountService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">comdirect-rest-api</a> &gt; <a href="index.source.html" class="el_package">eu.wuttke.comdirect.account</a> &gt; <span class="el_source">AccountService.java</span></div><h1>AccountService.java</h1><pre class="source lang-java linenums">package eu.wuttke.comdirect.account;
+
+import eu.wuttke.comdirect.login.ComdirectSession;
+import eu.wuttke.comdirect.util.BaseComdirectService;
+import eu.wuttke.comdirect.util.ComdirectException;
+import eu.wuttke.comdirect.util.SimpleHttpClient;
+import eu.wuttke.comdirect.util.SimpleHttpResponse;
+
+import java.io.IOException;
+
+public class AccountService extends BaseComdirectService {
+
+    public AccountService(SimpleHttpClient httpClient) {
+<span class="fc" id="L14">        super(httpClient);</span>
+<span class="fc" id="L15">    }</span>
+
+    public AccountsPage getAccounts(ComdirectSession session) throws ComdirectException {
+        try {
+<span class="fc" id="L19">            SimpleHttpResponse response = getWithTokens(session,</span>
+                    comdirectApiEndpoint +
+                            &quot;/api/banking/clients/user/v1/accounts/balances&quot; +
+                            &quot;?paging-first=0&amp;paging-count=1000&quot;);
+<span class="pc bpc" id="L23" title="1 of 2 branches missed.">            if (response.getStatusCode() != 200)</span>
+<span class="nc" id="L24">                throw new ComdirectException(&quot;error listing accounts&quot;, response.getStatusCode(), response.getBody());</span>
+<span class="fc" id="L25">            return objectMapper.readerFor(AccountsPage.class).readValue(response.getBody());</span>
+<span class="nc" id="L26">        } catch (IOException e) {</span>
+<span class="nc" id="L27">            throw new ComdirectException(&quot;unable to list accounts&quot;, 0, e.getMessage());</span>
+        }
+    }
+
+    public TransactionsPage getTransactions(ComdirectSession session, String accountId) throws ComdirectException {
+        try {
+<span class="nc" id="L33">            SimpleHttpResponse response = getWithTokens(session,</span>
+                    comdirectApiEndpoint +
+                            &quot;/api/banking/v1/accounts/&quot; + accountId + &quot;/transactions&quot; +
+                            &quot;?transactionDirection=CREDIT_AND_DEBIT&amp;transactionState=BOTH&amp;paging-first=0&amp;paging-count=100&quot;);
+<span class="nc bnc" id="L37" title="All 2 branches missed.">            if (response.getStatusCode() != 200)</span>
+<span class="nc" id="L38">                throw new ComdirectException(&quot;error listing transactions&quot;, response.getStatusCode(), response.getBody());</span>
+<span class="nc" id="L39">            return objectMapper.readerFor(TransactionsPage.class).readValue(response.getBody());</span>
+<span class="nc" id="L40">        } catch (IOException e) {</span>
+<span class="nc" id="L41">            throw new ComdirectException(&quot;unable to list transactions&quot;, 0, e.getMessage());</span>
+        }
+    }
+
+    private SimpleHttpResponse getWithTokens(ComdirectSession session, String url) throws IOException {
+<span class="fc" id="L46">        return httpClient.getForString(url, new String[] {</span>
+                ACCEPT_HEADER, APPLICATION_JSON,
+<span class="fc" id="L48">                AUTHORIZATION_HEADER, BEARER + session.getTokens().getAccessToken(),</span>
+<span class="fc" id="L49">                X_HTTP_REQUEST_INFO_HEADER, buildRequestInfoHeader(session.getSessionId())</span>
+        });
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

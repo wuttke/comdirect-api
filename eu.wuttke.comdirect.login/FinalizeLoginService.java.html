@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FinalizeLoginService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">comdirect-rest-api</a> &gt; <a href="index.source.html" class="el_package">eu.wuttke.comdirect.login</a> &gt; <span class="el_source">FinalizeLoginService.java</span></div><h1>FinalizeLoginService.java</h1><pre class="source lang-java linenums">package eu.wuttke.comdirect.login;
+
+import eu.wuttke.comdirect.util.BaseComdirectService;
+import eu.wuttke.comdirect.util.ComdirectException;
+import eu.wuttke.comdirect.util.SimpleHttpClient;
+import eu.wuttke.comdirect.util.SimpleHttpResponse;
+
+import java.io.IOException;
+import java.util.Map;
+
+public class FinalizeLoginService extends BaseComdirectService {
+
+    public FinalizeLoginService(SimpleHttpClient httpClient) {
+<span class="nc" id="L14">        super(httpClient);</span>
+<span class="nc" id="L15">    }</span>
+
+    public ComdirectSession finalizeLogin(
+            LoginCredentials credentials,
+            InitiateLoginResult initiateLoginResult,
+            String challengeResponse) throws ComdirectException {
+<span class="nc" id="L21">        String sessionId = patchSessionWithChallenge(initiateLoginResult, challengeResponse);</span>
+<span class="nc" id="L22">        Map&lt;String, Object&gt; data = postCustomOAuthForMap(credentials, initiateLoginResult);</span>
+
+<span class="nc" id="L24">        return new ComdirectSession(</span>
+<span class="nc" id="L25">                new Tokens((String)data.get(ACCESS_TOKEN),</span>
+<span class="nc" id="L26">                    (String)data.get(REFRESH_TOKEN),</span>
+<span class="nc" id="L27">                    calculateExpiry((Integer)data.get(EXPIRES_IN))),</span>
+                sessionId);
+    }
+
+    private Map&lt;String, Object&gt; postCustomOAuthForMap(LoginCredentials credentials, InitiateLoginResult initiateLoginResult) throws ComdirectException {
+        try {
+<span class="nc" id="L33">            String body = &quot;client_id=&quot; + credentials.getClientId() +</span>
+<span class="nc" id="L34">                    &quot;&amp;client_secret=&quot; + credentials.getClientSecret() +</span>
+                    &quot;&amp;grant_type=cd_secondary&quot; +
+<span class="nc" id="L36">                    &quot;&amp;token=&quot; + initiateLoginResult.getTokens().getAccessToken();</span>
+<span class="nc" id="L37">            SimpleHttpResponse response = httpClient.postForString(comdirectApiEndpoint + &quot;/oauth/token&quot;,</span>
+                    new String[] {
+                        ACCEPT_HEADER, APPLICATION_JSON,
+                        CONTENT_TYPE_HEADER, APPLICATION_X_WWW_FORM_URLENCODED
+                    },
+                    body);
+<span class="nc bnc" id="L43" title="All 2 branches missed.">            if (response.getStatusCode() != 200)</span>
+<span class="nc" id="L44">                throw new ComdirectException(&quot;unable to post for secondary token&quot;, response.getStatusCode(), response.getBody());</span>
+
+<span class="nc" id="L46">            return objectMapper.readerFor(Map.class).readValue(response.getBody());</span>
+<span class="nc" id="L47">        } catch (IOException e) {</span>
+<span class="nc" id="L48">            throw new ComdirectException(&quot;unable to post for secondary token&quot;, 0,</span>
+<span class="nc" id="L49">                    e.getMessage());</span>
+        }
+    }
+
+    private String patchSessionWithChallenge(InitiateLoginResult initiateLoginResult, String challengeResponse) throws ComdirectException {
+        try {
+<span class="nc" id="L55">            String body = &quot;{&quot; +</span>
+<span class="nc" id="L56">                        &quot;\&quot;identifier\&quot;:\&quot;&quot; + initiateLoginResult.getSessionId() + &quot;\&quot;,&quot; +</span>
+                        &quot;\&quot;sessionTanActive\&quot;:true,&quot; +
+                        &quot;\&quot;activated2FA\&quot;:true&quot; +
+                    &quot;}&quot;;
+
+<span class="nc" id="L61">            SimpleHttpResponse response = httpClient.patchForString(</span>
+<span class="nc" id="L62">                    comdirectApiEndpoint + &quot;/api/session/clients/user/v1/sessions/&quot; + initiateLoginResult.getSessionId(),</span>
+                    new String[] {
+                        ACCEPT_HEADER, APPLICATION_JSON,
+<span class="nc" id="L65">                        AUTHORIZATION_HEADER, BEARER + initiateLoginResult.getTokens().getAccessToken(),</span>
+<span class="nc" id="L66">                        X_HTTP_REQUEST_INFO_HEADER, buildRequestInfoHeader(initiateLoginResult.getSessionId()),</span>
+                        CONTENT_TYPE_HEADER, APPLICATION_JSON,
+<span class="nc" id="L68">                        &quot;x-once-authentication-info&quot;, &quot;{\&quot;id\&quot;:\&quot;&quot; + initiateLoginResult.getChallengeId() + &quot;\&quot;}&quot;,</span>
+                        &quot;x-once-authentication&quot;, challengeResponse
+                    },
+                    body);
+
+<span class="nc bnc" id="L73" title="All 2 branches missed.">            if (response.getStatusCode() != 200)</span>
+<span class="nc" id="L74">                throw new ComdirectException(&quot;unable to patch session with challenge response&quot;, response.getStatusCode(), response.getBody());</span>
+
+<span class="nc" id="L76">            Map&lt;String, String&gt; session = objectMapper.readerFor(Map.class).readValue(response.getBody());</span>
+<span class="nc" id="L77">            return session.get(&quot;identifier&quot;);</span>
+<span class="nc" id="L78">        } catch (IOException e) {</span>
+<span class="nc" id="L79">            throw new ComdirectException(&quot;unable to patch session with challenge response&quot;, 0,</span>
+<span class="nc" id="L80">                    e.getMessage());</span>
+        }
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
