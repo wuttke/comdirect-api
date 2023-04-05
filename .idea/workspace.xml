@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="932c1a92-7949-422e-8b6e-9326512c2fa1" name="Changes" comment="refactor common value classes">
+    <list default="true" id="932c1a92-7949-422e-8b6e-9326512c2fa1" name="Changes" comment="refactor http client, add unit test">
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/util/SimpleHttpResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/eu/wuttke/comdirect/account/AccountServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/account/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/account/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/login/FinalizeLoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/login/FinalizeLoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/login/InitiateLoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/login/InitiateLoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/util/SimpleHttpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/util/SimpleHttpClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/eu/wuttke/comdirect/login/LoginServiceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/cli/ComdirectTransactionsApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,12 +37,8 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="workspaceImportEnabled" value="true" />
-      </MavenImportingSettings>
-    </option>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2NokPfDeMSw7vABbULd07VOHMIW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -49,9 +54,9 @@
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -63,14 +68,50 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="eu.wuttke.comdirect.account" />
       <recent name="eu.wuttke.comdirect.login" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="eu.wuttke.comdirect.login" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.LoginServiceIT">
-    <configuration name="LoginServiceIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.AccountServiceTest.getAccounts">
+    <configuration name="ComdirectTransactionsApp" type="Application" factoryName="Application" nameIsGenerated="true">
+      <envs>
+        <env name="clientId" value="User_CDBA8404E3814B98AD0F8FA61240C922" />
+        <env name="clientSecret" value="93175310B7214E679B7DAE06D1CA5729" />
+        <env name="userName" value="32788195" />
+        <env name="password" value="616774" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="eu.wuttke.comdirect.cli.ComdirectTransactionsApp" />
+      <module name="comdirect-rest-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="eu.wuttke.comdirect.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountServiceTest.getAccounts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="comdirect-rest-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="eu.wuttke.comdirect.account.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="eu.wuttke.comdirect.account" />
+      <option name="MAIN_CLASS_NAME" value="eu.wuttke.comdirect.account.AccountServiceTest" />
+      <option name="METHOD_NAME" value="getAccounts" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComdirectTransactionsApp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="comdirect-rest-api" />
       <extension name="coverage">
         <pattern>
@@ -78,8 +119,8 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="eu.wuttke.comdirect.login" />
-      <option name="MAIN_CLASS_NAME" value="eu.wuttke.comdirect.login.LoginServiceIT" />
+      <option name="PACKAGE_NAME" value="eu.wuttke.comdirect.cli" />
+      <option name="MAIN_CLASS_NAME" value="eu.wuttke.comdirect.cli.ComdirectTransactionsApp" />
       <option name="METHOD_NAME" value="testLogin" />
       <option name="TEST_OBJECT" value="class" />
       <envs>
@@ -92,7 +133,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginServiceIT.testLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ComdirectTransactionsApp.testLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="comdirect-rest-api" />
       <extension name="coverage">
         <pattern>
@@ -100,8 +141,8 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="eu.wuttke.comdirect.login" />
-      <option name="MAIN_CLASS_NAME" value="eu.wuttke.comdirect.login.LoginServiceIT" />
+      <option name="PACKAGE_NAME" value="eu.wuttke.comdirect.cli" />
+      <option name="MAIN_CLASS_NAME" value="eu.wuttke.comdirect.cli.ComdirectTransactionsApp" />
       <option name="METHOD_NAME" value="testLogin" />
       <option name="TEST_OBJECT" value="method" />
       <envs>
@@ -115,13 +156,16 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.LoginServiceIT" />
-      <item itemvalue="JUnit.LoginServiceIT.testLogin" />
+      <item itemvalue="Application.ComdirectTransactionsApp" />
+      <item itemvalue="JUnit.AccountServiceTest.getAccounts" />
+      <item itemvalue="JUnit.ComdirectTransactionsApp" />
+      <item itemvalue="JUnit.ComdirectTransactionsApp.testLogin" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.LoginServiceIT" />
-        <item itemvalue="JUnit.LoginServiceIT.testLogin" />
+        <item itemvalue="JUnit.AccountServiceTest.getAccounts" />
+        <item itemvalue="JUnit.ComdirectTransactionsApp" />
+        <item itemvalue="JUnit.ComdirectTransactionsApp.testLogin" />
       </list>
     </recent_temporary>
   </component>
@@ -197,23 +241,19 @@
     <MESSAGE value="CI: comment-out step" />
     <MESSAGE value="data structures for transactions" />
     <MESSAGE value="refactor common value classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor common value classes" />
+    <MESSAGE value="refactor http client, add unit test" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor http client, add unit test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/eu/wuttke/comdirect/login/LoginServiceIT.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/eu/wuttke/comdirect/login/LoginServiceIT.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/cli/ComdirectTransactionsApp.java</url>
           <line>37</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/eu/wuttke/comdirect/login/LoginServiceIT.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/cli/ComdirectTransactionsApp.java</url>
           <line>40</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>

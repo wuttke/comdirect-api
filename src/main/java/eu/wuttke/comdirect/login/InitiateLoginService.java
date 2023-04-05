@@ -4,13 +4,15 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import eu.wuttke.comdirect.util.BaseComdirectService;
 import eu.wuttke.comdirect.util.ComdirectException;
 import eu.wuttke.comdirect.util.SimpleHttpClient;
+import eu.wuttke.comdirect.util.SimpleHttpResponse;
 
 import java.io.IOException;
-import java.net.http.HttpResponse;
 import java.util.Map;
 import java.util.UUID;
 
 public class InitiateLoginService extends BaseComdirectService {
+
+    private static final String X_ONCE_AUTHENTICATION_INFO = "x-once-authentication-info";
 
     public InitiateLoginService(SimpleHttpClient httpClient) {
         super(httpClient);
@@ -34,7 +36,7 @@ public class InitiateLoginService extends BaseComdirectService {
                 "\"sessionTanActive\":true," +
                 "\"activated2FA\":true}";
 
-            HttpResponse<String> response = httpClient.postForString(
+            SimpleHttpResponse response = httpClient.postForString(
                     comdirectApiEndpoint + "/api/session/clients/user/v1/sessions/" + sessionId + "/validate",
                     new String[] {
                         ACCEPT_HEADER, APPLICATION_JSON,
@@ -44,10 +46,12 @@ public class InitiateLoginService extends BaseComdirectService {
                     },
                     body);
 
-            if (response.statusCode() != 201)
-                throw new ComdirectException("unable to validate session", response.statusCode(), response.body());
+            if (response.getStatusCode() != 201)
+                throw new ComdirectException("unable to validate session", response.getStatusCode(), response.getBody());
+            if (!response.getHeaders().containsKey(X_ONCE_AUTHENTICATION_INFO))
+                throw new ComdirectException("unable to validate session: missing header \"x-once-authentication-info\"", -1, response.getBody());
 
-            String authInfoStr = response.headers().firstValue("x-once-authentication-info").orElseThrow();
+            String authInfoStr = response.getHeaders().get(X_ONCE_AUTHENTICATION_INFO).get(0);
             return objectMapper.readerFor(Map.class).readValue(authInfoStr);
         } catch (IOException e) {
             throw new ComdirectException("unable to validate session", 0,
@@ -59,17 +63,17 @@ public class InitiateLoginService extends BaseComdirectService {
         try {
             String sessionId = UUID.randomUUID().toString();
 
-            HttpResponse<String> response = httpClient.getForString(comdirectApiEndpoint + "/api/session/clients/user/v1/sessions",
+            SimpleHttpResponse response = httpClient.getForString(comdirectApiEndpoint + "/api/session/clients/user/v1/sessions",
                     new String[]{
                             ACCEPT_HEADER, APPLICATION_JSON,
                             AUTHORIZATION_HEADER, BEARER + tokens.getAccessToken(),
                             X_HTTP_REQUEST_INFO_HEADER, buildRequestInfoHeader(sessionId)
                     });
 
-            if (response.statusCode() != 200)
-                throw new ComdirectException("unable to get session", response.statusCode(), response.body());
+            if (response.getStatusCode() != 200)
+                throw new ComdirectException("unable to get session", response.getStatusCode(), response.getBody());
 
-            Map[] sessions = objectMapper.readerFor(Map[].class).readValue(response.body());
+            Map[] sessions = objectMapper.readerFor(Map[].class).readValue(response.getBody());
             return (String) sessions[0].get("identifier");
         } catch (IOException e) {
             throw new ComdirectException("unable to get session", 0,
@@ -79,7 +83,7 @@ public class InitiateLoginService extends BaseComdirectService {
 
     private Tokens postCredentialsForTokens(LoginCredentials credentials) throws ComdirectException {
         try {
-            HttpResponse<String> response = httpClient.postForString(
+            SimpleHttpResponse response = httpClient.postForString(
                     comdirectApiEndpoint + "/oauth/token",
                     new String[]{
                             ACCEPT_HEADER, APPLICATION_JSON,
@@ -91,10 +95,10 @@ public class InitiateLoginService extends BaseComdirectService {
                             "&password=" + credentials.getPassword() +
                             "&grant_type=password");
 
-            if (response.statusCode() != 200)
-                throw new ComdirectException("unable to obtain access token", response.statusCode(), response.body());
+            if (response.getStatusCode() != 200)
+                throw new ComdirectException("unable to obtain access token", response.getStatusCode(), response.getBody());
 
-            return parseTokens(response.body());
+            return parseTokens(response.getBody());
         } catch (IOException e) {
             throw new ComdirectException("unable to obtain access token", 0,
                     e.getMessage());

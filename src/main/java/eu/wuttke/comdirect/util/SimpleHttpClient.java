@@ -12,22 +12,22 @@ import static java.time.temporal.ChronoUnit.SECONDS;
 
 public class SimpleHttpClient {
 
-    public HttpResponse<String> postForString(String url, String[] headers, String bodyStr)
+    public SimpleHttpResponse postForString(String url, String[] headers, String bodyStr)
             throws IOException {
         return performRequestForString("POST", url, headers, bodyStr);
     }
 
-    public HttpResponse<String> getForString(String url, String[] headers)
+    public SimpleHttpResponse getForString(String url, String[] headers)
             throws IOException {
         return performRequestForString("GET", url, headers, "");
     }
 
-    public HttpResponse<String> patchForString(String url, String[] headers, String bodyStr)
+    public SimpleHttpResponse patchForString(String url, String[] headers, String bodyStr)
             throws IOException {
         return performRequestForString("PATCH", url, headers, bodyStr);
     }
 
-    private HttpResponse<String> performRequestForString(
+    private SimpleHttpResponse performRequestForString(
             String method, String url, String[] headers, String bodyStr)
     throws IOException {
         try {
@@ -39,7 +39,8 @@ public class SimpleHttpClient {
                     .timeout(Duration.of(10, SECONDS))
                     .build();
 
-            return client.send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            return new SimpleHttpResponse(response.body(), response.statusCode(), response.headers().map());
         } catch (InterruptedException | URISyntaxException e) {
             throw new IOException("unable to perform HTTP request", e);
         }

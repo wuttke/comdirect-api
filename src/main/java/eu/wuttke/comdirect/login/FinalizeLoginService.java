@@ -3,9 +3,9 @@ package eu.wuttke.comdirect.login;
 import eu.wuttke.comdirect.util.BaseComdirectService;
 import eu.wuttke.comdirect.util.ComdirectException;
 import eu.wuttke.comdirect.util.SimpleHttpClient;
+import eu.wuttke.comdirect.util.SimpleHttpResponse;
 
 import java.io.IOException;
-import java.net.http.HttpResponse;
 import java.util.Map;
 
 public class FinalizeLoginService extends BaseComdirectService {
@@ -34,16 +34,16 @@ public class FinalizeLoginService extends BaseComdirectService {
                     "&client_secret=" + credentials.getClientSecret() +
                     "&grant_type=cd_secondary" +
                     "&token=" + initiateLoginResult.getTokens().getAccessToken();
-            HttpResponse<String> response = httpClient.postForString(comdirectApiEndpoint + "/oauth/token",
+            SimpleHttpResponse response = httpClient.postForString(comdirectApiEndpoint + "/oauth/token",
                     new String[] {
                         ACCEPT_HEADER, APPLICATION_JSON,
                         CONTENT_TYPE_HEADER, APPLICATION_X_WWW_FORM_URLENCODED
                     },
                     body);
-            if (response.statusCode() != 200)
-                throw new ComdirectException("unable to post for secondary token", response.statusCode(), response.body());
+            if (response.getStatusCode() != 200)
+                throw new ComdirectException("unable to post for secondary token", response.getStatusCode(), response.getBody());
 
-            return objectMapper.readerFor(Map.class).readValue(response.body());
+            return objectMapper.readerFor(Map.class).readValue(response.getBody());
         } catch (IOException e) {
             throw new ComdirectException("unable to post for secondary token", 0,
                     e.getMessage());
@@ -58,7 +58,7 @@ public class FinalizeLoginService extends BaseComdirectService {
                         "\"activated2FA\":true" +
                     "}";
 
-            HttpResponse<String> response = httpClient.patchForString(
+            SimpleHttpResponse response = httpClient.patchForString(
                     comdirectApiEndpoint + "/api/session/clients/user/v1/sessions/" + initiateLoginResult.getSessionId(),
                     new String[] {
                         ACCEPT_HEADER, APPLICATION_JSON,
@@ -70,10 +70,10 @@ public class FinalizeLoginService extends BaseComdirectService {
                     },
                     body);
 
-            if (response.statusCode() != 200)
-                throw new ComdirectException("unable to patch session with challenge response", response.statusCode(), response.body());
+            if (response.getStatusCode() != 200)
+                throw new ComdirectException("unable to patch session with challenge response", response.getStatusCode(), response.getBody());
 
-            Map<String, String> session = objectMapper.readerFor(Map.class).readValue(response.body());
+            Map<String, String> session = objectMapper.readerFor(Map.class).readValue(response.getBody());
             return session.get("identifier");
         } catch (IOException e) {
             throw new ComdirectException("unable to patch session with challenge response", 0,
