@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="932c1a92-7949-422e-8b6e-9326512c2fa1" name="Changes" comment="add another test case">
+      <change afterPath="$PROJECT_DIR$/src/test/java/eu/wuttke/comdirect/login/InitiateLoginServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/cli/ComdirectTransactionsApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/cli/ComdirectTransactionsApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/eu/wuttke/comdirect/account/AccountServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/eu/wuttke/comdirect/account/AccountServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,13 +17,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -38,19 +38,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="eu.wuttke.comdirect.account" />
@@ -60,14 +60,14 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="eu.wuttke.comdirect.account" />
       <recent name="eu.wuttke.comdirect.login" />
+      <recent name="eu.wuttke.comdirect.account" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="eu.wuttke.comdirect.login" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AccountServiceTest">
+  <component name="RunManager" selected="JUnit.InitiateLoginServiceTest">
     <configuration name="ComdirectTransactionsApp" type="Application" factoryName="Application" nameIsGenerated="true">
       <envs>
         <env name="clientId" value="User_CDBA8404E3814B98AD0F8FA61240C922" />
@@ -140,24 +140,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ComdirectTransactionsApp.testLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="InitiateLoginServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="comdirect-rest-api" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="eu.wuttke.comdirect.value.*" />
+          <option name="PATTERN" value="eu.wuttke.comdirect.login.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="eu.wuttke.comdirect.cli" />
-      <option name="MAIN_CLASS_NAME" value="eu.wuttke.comdirect.cli.ComdirectTransactionsApp" />
-      <option name="METHOD_NAME" value="testLogin" />
+      <option name="PACKAGE_NAME" value="eu.wuttke.comdirect.login" />
+      <option name="MAIN_CLASS_NAME" value="eu.wuttke.comdirect.login.InitiateLoginServiceTest" />
+      <option name="METHOD_NAME" value="initiateLogin" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InitiateLoginServiceTest.initiateLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="comdirect-rest-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="eu.wuttke.comdirect.login.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="eu.wuttke.comdirect.login" />
+      <option name="MAIN_CLASS_NAME" value="eu.wuttke.comdirect.login.InitiateLoginServiceTest" />
+      <option name="METHOD_NAME" value="initiateLogin" />
       <option name="TEST_OBJECT" value="method" />
-      <envs>
-        <env name="clientId" value="User_CDBA8404E3814B98AD0F8FA61240C922" />
-        <env name="clientSecret" value="93175310B7214E679B7DAE06D1CA5729" />
-        <env name="userName" value="32788195" />
-        <env name="password" value="616774" />
-      </envs>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -167,14 +177,16 @@
       <item itemvalue="JUnit.AccountServiceTest" />
       <item itemvalue="JUnit.AccountServiceTest.getAccounts" />
       <item itemvalue="JUnit.ComdirectTransactionsApp" />
-      <item itemvalue="JUnit.ComdirectTransactionsApp.testLogin" />
+      <item itemvalue="JUnit.InitiateLoginServiceTest" />
+      <item itemvalue="JUnit.InitiateLoginServiceTest.initiateLogin" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.InitiateLoginServiceTest" />
+        <item itemvalue="JUnit.InitiateLoginServiceTest.initiateLogin" />
         <item itemvalue="JUnit.AccountServiceTest" />
         <item itemvalue="JUnit.AccountServiceTest.getAccounts" />
         <item itemvalue="JUnit.ComdirectTransactionsApp" />
-        <item itemvalue="JUnit.ComdirectTransactionsApp.testLogin" />
       </list>
     </recent_temporary>
   </component>
@@ -250,7 +262,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680708814479</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add another test case">
+      <created>1680709692404</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1680709692404</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -294,6 +313,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/account/AccountService.java</url>
           <line>37</line>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/login/InitiateLoginService.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/eu/wuttke/comdirect/login/InitiateLoginService.java</url>
+          <line>102</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
