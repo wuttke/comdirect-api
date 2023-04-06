@@ -26,10 +26,10 @@ public abstract class BaseComdirectService {
     }
 
     protected Date calculateExpiry(Integer expiresIn) {
-<span class="nc bnc" id="L29" title="All 2 branches missed.">        if (expiresIn == null)</span>
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">        if (expiresIn == null)</span>
 <span class="nc" id="L30">            return null;</span>
-<span class="nc" id="L31">        Date now = new Date();</span>
-<span class="nc" id="L32">        return new Date(now.getTime() + expiresIn * 1000L);</span>
+<span class="fc" id="L31">        Date now = new Date();</span>
+<span class="fc" id="L32">        return new Date(now.getTime() + expiresIn * 1000L);</span>
     }
 
     private String generateTimestamp() {

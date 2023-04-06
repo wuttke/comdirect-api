@@ -15,44 +15,44 @@ public class InitiateLoginService extends BaseComdirectService {
     private static final String X_ONCE_AUTHENTICATION_INFO = &quot;x-once-authentication-info&quot;;
 
     public InitiateLoginService(SimpleHttpClient httpClient) {
-<span class="nc" id="L18">        super(httpClient);</span>
-<span class="nc" id="L19">    }</span>
+<span class="fc" id="L18">        super(httpClient);</span>
+<span class="fc" id="L19">    }</span>
 
     public InitiateLoginResult initiateLogin(LoginCredentials credentials) throws ComdirectException {
-<span class="nc" id="L22">        Tokens tokens = postCredentialsForTokens(credentials);</span>
-<span class="nc" id="L23">        String sessionId = generateAndGetSessionId(tokens);</span>
-<span class="nc" id="L24">        Map&lt;String,String&gt; authInfo = postToValidateSession(tokens, sessionId);</span>
+<span class="fc" id="L22">        Tokens tokens = postCredentialsForTokens(credentials);</span>
+<span class="fc" id="L23">        String sessionId = generateAndGetSessionId(tokens);</span>
+<span class="fc" id="L24">        Map&lt;String,String&gt; authInfo = postToValidateSession(tokens, sessionId);</span>
 
-<span class="nc" id="L26">        return new InitiateLoginResult(</span>
-<span class="nc" id="L27">                ChallengeType.decodeChallengeType(authInfo.get(&quot;typ&quot;)),</span>
-<span class="nc" id="L28">                authInfo.get(&quot;id&quot;),</span>
-<span class="nc" id="L29">                authInfo.get(&quot;challenge&quot;),</span>
+<span class="fc" id="L26">        return new InitiateLoginResult(</span>
+<span class="fc" id="L27">                ChallengeType.decodeChallengeType(authInfo.get(&quot;typ&quot;)),</span>
+<span class="fc" id="L28">                authInfo.get(&quot;id&quot;),</span>
+<span class="fc" id="L29">                authInfo.get(&quot;challenge&quot;),</span>
                 tokens, sessionId);
     }
 
     private Map&lt;String, String&gt; postToValidateSession(Tokens tokens, String sessionId) throws ComdirectException {
         try {
-<span class="nc" id="L35">            String body = &quot;{\&quot;identifier\&quot;:\&quot;&quot; + sessionId + &quot;\&quot;,&quot; +</span>
+<span class="fc" id="L35">            String body = &quot;{\&quot;identifier\&quot;:\&quot;&quot; + sessionId + &quot;\&quot;,&quot; +</span>
                 &quot;\&quot;sessionTanActive\&quot;:true,&quot; +
                 &quot;\&quot;activated2FA\&quot;:true}&quot;;
 
-<span class="nc" id="L39">            SimpleHttpResponse response = httpClient.postForString(</span>
+<span class="fc" id="L39">            SimpleHttpResponse response = httpClient.postForString(</span>
                     comdirectApiEndpoint + &quot;/api/session/clients/user/v1/sessions/&quot; + sessionId + &quot;/validate&quot;,
                     new String[] {
                         ACCEPT_HEADER, APPLICATION_JSON,
-<span class="nc" id="L43">                        AUTHORIZATION_HEADER, BEARER + tokens.getAccessToken(),</span>
-<span class="nc" id="L44">                        X_HTTP_REQUEST_INFO_HEADER, buildRequestInfoHeader(sessionId),</span>
+<span class="fc" id="L43">                        AUTHORIZATION_HEADER, BEARER + tokens.getAccessToken(),</span>
+<span class="fc" id="L44">                        X_HTTP_REQUEST_INFO_HEADER, buildRequestInfoHeader(sessionId),</span>
                         CONTENT_TYPE_HEADER, APPLICATION_JSON
                     },
                     body);
 
-<span class="nc bnc" id="L49" title="All 2 branches missed.">            if (response.getStatusCode() != 201)</span>
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">            if (response.getStatusCode() != 201)</span>
 <span class="nc" id="L50">                throw new ComdirectException(&quot;unable to validate session&quot;, response.getStatusCode(), response.getBody());</span>
-<span class="nc bnc" id="L51" title="All 2 branches missed.">            if (!response.getHeaders().containsKey(X_ONCE_AUTHENTICATION_INFO))</span>
+<span class="pc bpc" id="L51" title="1 of 2 branches missed.">            if (!response.getHeaders().containsKey(X_ONCE_AUTHENTICATION_INFO))</span>
 <span class="nc" id="L52">                throw new ComdirectException(&quot;unable to validate session: missing header \&quot;x-once-authentication-info\&quot;&quot;, -1, response.getBody());</span>
 
-<span class="nc" id="L54">            String authInfoStr = response.getHeaders().get(X_ONCE_AUTHENTICATION_INFO).get(0);</span>
-<span class="nc" id="L55">            return objectMapper.readerFor(Map.class).readValue(authInfoStr);</span>
+<span class="fc" id="L54">            String authInfoStr = response.getHeaders().get(X_ONCE_AUTHENTICATION_INFO).get(0);</span>
+<span class="fc" id="L55">            return objectMapper.readerFor(Map.class).readValue(authInfoStr);</span>
 <span class="nc" id="L56">        } catch (IOException e) {</span>
 <span class="nc" id="L57">            throw new ComdirectException(&quot;unable to validate session&quot;, 0,</span>
 <span class="nc" id="L58">                    e.getMessage());</span>
@@ -61,20 +61,20 @@ public class InitiateLoginService extends BaseComdirectService {
 
     private String generateAndGetSessionId(Tokens tokens) throws ComdirectException {
         try {
-<span class="nc" id="L64">            String sessionId = UUID.randomUUID().toString();</span>
+<span class="fc" id="L64">            String sessionId = UUID.randomUUID().toString();</span>
 
-<span class="nc" id="L66">            SimpleHttpResponse response = httpClient.getForString(comdirectApiEndpoint + &quot;/api/session/clients/user/v1/sessions&quot;,</span>
+<span class="fc" id="L66">            SimpleHttpResponse response = httpClient.getForString(comdirectApiEndpoint + &quot;/api/session/clients/user/v1/sessions&quot;,</span>
                     new String[]{
                             ACCEPT_HEADER, APPLICATION_JSON,
-<span class="nc" id="L69">                            AUTHORIZATION_HEADER, BEARER + tokens.getAccessToken(),</span>
-<span class="nc" id="L70">                            X_HTTP_REQUEST_INFO_HEADER, buildRequestInfoHeader(sessionId)</span>
+<span class="fc" id="L69">                            AUTHORIZATION_HEADER, BEARER + tokens.getAccessToken(),</span>
+<span class="fc" id="L70">                            X_HTTP_REQUEST_INFO_HEADER, buildRequestInfoHeader(sessionId)</span>
                     });
 
-<span class="nc bnc" id="L73" title="All 2 branches missed.">            if (response.getStatusCode() != 200)</span>
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">            if (response.getStatusCode() != 200)</span>
 <span class="nc" id="L74">                throw new ComdirectException(&quot;unable to get session&quot;, response.getStatusCode(), response.getBody());</span>
 
-<span class="nc" id="L76">            Map[] sessions = objectMapper.readerFor(Map[].class).readValue(response.getBody());</span>
-<span class="nc" id="L77">            return (String) sessions[0].get(&quot;identifier&quot;);</span>
+<span class="fc" id="L76">            Map[] sessions = objectMapper.readerFor(Map[].class).readValue(response.getBody());</span>
+<span class="fc" id="L77">            return (String) sessions[0].get(&quot;identifier&quot;);</span>
 <span class="nc" id="L78">        } catch (IOException e) {</span>
 <span class="nc" id="L79">            throw new ComdirectException(&quot;unable to get session&quot;, 0,</span>
 <span class="nc" id="L80">                    e.getMessage());</span>
@@ -83,22 +83,22 @@ public class InitiateLoginService extends BaseComdirectService {
 
     private Tokens postCredentialsForTokens(LoginCredentials credentials) throws ComdirectException {
         try {
-<span class="nc" id="L86">            SimpleHttpResponse response = httpClient.postForString(</span>
+<span class="fc" id="L86">            SimpleHttpResponse response = httpClient.postForString(</span>
                     comdirectApiEndpoint + &quot;/oauth/token&quot;,
                     new String[]{
                             ACCEPT_HEADER, APPLICATION_JSON,
                             CONTENT_TYPE_HEADER, APPLICATION_X_WWW_FORM_URLENCODED
                     },
-<span class="nc" id="L92">                    &quot;client_id=&quot; + credentials.getClientId() +</span>
-<span class="nc" id="L93">                            &quot;&amp;client_secret=&quot; + credentials.getClientSecret() +</span>
-<span class="nc" id="L94">                            &quot;&amp;username=&quot; + credentials.getUserName() +</span>
-<span class="nc" id="L95">                            &quot;&amp;password=&quot; + credentials.getPassword() +</span>
+<span class="fc" id="L92">                    &quot;client_id=&quot; + credentials.getClientId() +</span>
+<span class="fc" id="L93">                            &quot;&amp;client_secret=&quot; + credentials.getClientSecret() +</span>
+<span class="fc" id="L94">                            &quot;&amp;username=&quot; + credentials.getUserName() +</span>
+<span class="fc" id="L95">                            &quot;&amp;password=&quot; + credentials.getPassword() +</span>
                             &quot;&amp;grant_type=password&quot;);
 
-<span class="nc bnc" id="L98" title="All 2 branches missed.">            if (response.getStatusCode() != 200)</span>
+<span class="pc bpc" id="L98" title="1 of 2 branches missed.">            if (response.getStatusCode() != 200)</span>
 <span class="nc" id="L99">                throw new ComdirectException(&quot;unable to obtain access token&quot;, response.getStatusCode(), response.getBody());</span>
 
-<span class="nc" id="L101">            return parseTokens(response.getBody());</span>
+<span class="fc" id="L101">            return parseTokens(response.getBody());</span>
 <span class="nc" id="L102">        } catch (IOException e) {</span>
 <span class="nc" id="L103">            throw new ComdirectException(&quot;unable to obtain access token&quot;, 0,</span>
 <span class="nc" id="L104">                    e.getMessage());</span>
@@ -106,10 +106,10 @@ public class InitiateLoginService extends BaseComdirectService {
     }
 
     private Tokens parseTokens(String body) throws JsonProcessingException {
-<span class="nc" id="L109">        Map&lt;String,Object&gt; data = objectMapper.readerFor(Map.class).readValue(body);</span>
-<span class="nc" id="L110">        return new Tokens((String)data.get(ACCESS_TOKEN),</span>
-<span class="nc" id="L111">                (String)data.get(REFRESH_TOKEN),</span>
-<span class="nc" id="L112">                calculateExpiry((Integer)data.get(EXPIRES_IN)));</span>
+<span class="fc" id="L109">        Map&lt;String,Object&gt; data = objectMapper.readerFor(Map.class).readValue(body);</span>
+<span class="fc" id="L110">        return new Tokens((String)data.get(ACCESS_TOKEN),</span>
+<span class="fc" id="L111">                (String)data.get(REFRESH_TOKEN),</span>
+<span class="fc" id="L112">                calculateExpiry((Integer)data.get(EXPIRES_IN)));</span>
     }
 
 }
