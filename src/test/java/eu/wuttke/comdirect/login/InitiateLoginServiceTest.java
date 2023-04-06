@@ -63,6 +63,9 @@ class InitiateLoginServiceTest {
         assertEquals("def", result.getTokens().getRefreshToken());
         assertNull(result.getChallenge());
         assertTrue(result.getTokens().getExpiry().after(new Date()));
+
+        assertEquals("Bearer abc", headers1.getValue()[3]);
+        assertEquals("Bearer abc", headers2.getValue()[3]);
     }
 
     private static String TOKEN_RESPONSE = "{\"access_token\":\"abc\",\"token_type\":\"bearer\",\"refresh_token\":\"def\",\"expires_in\":599,\"scope\":\"TWO_FACTOR\",\"kdnr\":\"xx\",\"bpid\":123,\"kontaktId\":456}";

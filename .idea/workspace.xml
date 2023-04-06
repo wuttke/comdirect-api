@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="932c1a92-7949-422e-8b6e-9326512c2fa1" name="Changes" comment="add another test case">
-      <change afterPath="$PROJECT_DIR$/src/test/java/eu/wuttke/comdirect/login/InitiateLoginServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/eu/wuttke/comdirect/login/FinalizeLoginServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/eu/wuttke/comdirect/login/InitiateLoginServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/eu/wuttke/comdirect/login/InitiateLoginServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +26,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="main" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -67,7 +75,7 @@
       <recent name="eu.wuttke.comdirect.login" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.InitiateLoginServiceTest">
+  <component name="RunManager" selected="JUnit.FinalizeLoginServiceTest.testFinalizeLogin">
     <configuration name="ComdirectTransactionsApp" type="Application" factoryName="Application" nameIsGenerated="true">
       <envs>
         <env name="clientId" value="User_CDBA8404E3814B98AD0F8FA61240C922" />
@@ -118,24 +126,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ComdirectTransactionsApp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FinalizeLoginServiceTest.testFinalizeLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="comdirect-rest-api" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="eu.wuttke.comdirect.value.*" />
+          <option name="PATTERN" value="eu.wuttke.comdirect.login.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="eu.wuttke.comdirect.cli" />
-      <option name="MAIN_CLASS_NAME" value="eu.wuttke.comdirect.cli.ComdirectTransactionsApp" />
-      <option name="METHOD_NAME" value="testLogin" />
-      <option name="TEST_OBJECT" value="class" />
-      <envs>
-        <env name="clientId" value="User_CDBA8404E3814B98AD0F8FA61240C922" />
-        <env name="clientSecret" value="93175310B7214E679B7DAE06D1CA5729" />
-        <env name="userName" value="32788195" />
-        <env name="password" value="616774" />
-      </envs>
+      <option name="PACKAGE_NAME" value="eu.wuttke.comdirect.login" />
+      <option name="MAIN_CLASS_NAME" value="eu.wuttke.comdirect.login.FinalizeLoginServiceTest" />
+      <option name="METHOD_NAME" value="testFinalizeLogin" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -176,17 +178,17 @@
       <item itemvalue="Application.ComdirectTransactionsApp" />
       <item itemvalue="JUnit.AccountServiceTest" />
       <item itemvalue="JUnit.AccountServiceTest.getAccounts" />
-      <item itemvalue="JUnit.ComdirectTransactionsApp" />
+      <item itemvalue="JUnit.FinalizeLoginServiceTest.testFinalizeLogin" />
       <item itemvalue="JUnit.InitiateLoginServiceTest" />
       <item itemvalue="JUnit.InitiateLoginServiceTest.initiateLogin" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.InitiateLoginServiceTest" />
+        <item itemvalue="JUnit.FinalizeLoginServiceTest.testFinalizeLogin" />
         <item itemvalue="JUnit.InitiateLoginServiceTest.initiateLogin" />
+        <item itemvalue="JUnit.InitiateLoginServiceTest" />
         <item itemvalue="JUnit.AccountServiceTest" />
         <item itemvalue="JUnit.AccountServiceTest.getAccounts" />
-        <item itemvalue="JUnit.ComdirectTransactionsApp" />
       </list>
     </recent_temporary>
   </component>
@@ -269,7 +271,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680709692404</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="add another test case">
+      <created>1680764170208</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1680764170208</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
