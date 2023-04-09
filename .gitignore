@@ -47,3 +47,5 @@ build/
 
 ### Mac OS ###
 .DS_Store
+.idea/workspace.xml
+keys
