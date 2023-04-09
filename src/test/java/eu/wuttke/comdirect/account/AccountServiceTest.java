@@ -54,7 +54,24 @@ class AccountServiceTest {
         assertEquals("Authorization", headers.getValue()[2]);
         assertEquals("Bearer " + session.getTokens().getAccessToken(), headers.getValue()[3]);
         assertEquals("x-http-request-info", headers.getValue()[4]);
-        assertEquals("64F12122866E43D58984BD2CE60FB84D", page.getValues().get(0).getAccountId());
+
+        AccountBalance balance = page.getValues().get(0);
+        Account account = balance.getAccount();
+        assertEquals("64F12122866E43D58984BD2CE60FB84D", balance.getAccountId());
+        assertEquals(123.45, balance.getBalance().getValue());
+        assertEquals(123.45, balance.getBalance().getValue());
+        assertEquals(123.45, balance.getBalanceEUR().getValue());
+        assertEquals(123.45, balance.getAvailableCashAmount().getValue());
+        assertEquals(123.45, balance.getAvailableCashAmountEUR().getValue());
+
+        assertEquals("64F12122866E43D58984BD2CE60FB84D", account.getAccountId());
+        assertEquals("102327881900", account.getAccountDisplayId());
+        assertEquals("EUR", account.getCurrency());
+        assertEquals("5CBCEE21441E4669B6E0C162C95737BE", account.getClientId());
+        assertEquals("CA", account.getAccountType().getKey());
+        assertEquals("DE14200411330327881900", account.getIban());
+        assertEquals("COBADEHD001", account.getBic());
+        assertEquals(123, account.getCreditLimit().getValue());
     }
 
     @Test
