@@ -1,12 +1,12 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 Comdirect REST API,eu.wuttke.comdirect.account,AccountService,36,82,2,2,6,11,2,4,0,4
 Comdirect REST API,eu.wuttke.comdirect.account,AccountsPage,3,14,0,0,1,6,1,4,1,4
-Comdirect REST API,eu.wuttke.comdirect.account,Account,24,35,0,0,8,17,8,9,8,9
+Comdirect REST API,eu.wuttke.comdirect.account,Account,0,59,0,0,0,25,0,17,0,17
 Comdirect REST API,eu.wuttke.comdirect.account,TransactionsPage,6,18,0,0,2,8,2,5,2,5
 Comdirect REST API,eu.wuttke.comdirect.account,Transaction,0,101,0,0,0,43,0,29,0,29
 Comdirect REST API,eu.wuttke.comdirect.account,TransactionAggregation,15,23,0,0,5,11,5,6,5,6
 Comdirect REST API,eu.wuttke.comdirect.account,BankContact,6,18,0,0,2,8,2,5,2,5
-Comdirect REST API,eu.wuttke.comdirect.account,AccountBalance,15,30,0,0,5,14,5,8,5,8
+Comdirect REST API,eu.wuttke.comdirect.account,AccountBalance,0,45,0,0,0,19,0,13,0,13
 Comdirect REST API,eu.wuttke.comdirect.value,PageIndex,6,11,0,0,2,5,2,3,2,3
 Comdirect REST API,eu.wuttke.comdirect.value,Amount,0,17,0,0,0,7,0,5,0,5
 Comdirect REST API,eu.wuttke.comdirect.value,CodedValue,0,17,0,0,0,7,0,5,0,5
