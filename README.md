@@ -19,6 +19,15 @@ Why another library?
 
 ## Usage
 
+This library is published on Maven Central.
+Use it by including in your POM:
+
+    <dependency>
+        <groupId>eu.wuttke</groupId>
+        <artifactId>comdirect-rest-api</artifactId>
+        <version>1.0</version>
+    </dependency>
+
 ### Login process
 
 You need a HTTP client instance and the Comdirect REST API OAuth2 credentials. 
