@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>eu.wuttke</groupId>
     <artifactId>comdirect-rest-api</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
     <name>Comdirect REST API</name>
     <description>A library to use the Comdirect REST API</description>
     <url>https://github.com/wuttke/comdirect-api</url>
