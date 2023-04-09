@@ -3,13 +3,13 @@ Comdirect REST API,eu.wuttke.comdirect.account,AccountService,36,82,2,2,6,11,2,4
 Comdirect REST API,eu.wuttke.comdirect.account,AccountsPage,3,14,0,0,1,6,1,4,1,4
 Comdirect REST API,eu.wuttke.comdirect.account,Account,24,35,0,0,8,17,8,9,8,9
 Comdirect REST API,eu.wuttke.comdirect.account,TransactionsPage,6,18,0,0,2,8,2,5,2,5
-Comdirect REST API,eu.wuttke.comdirect.account,Transaction,39,62,0,0,13,30,13,16,13,16
+Comdirect REST API,eu.wuttke.comdirect.account,Transaction,0,101,0,0,0,43,0,29,0,29
 Comdirect REST API,eu.wuttke.comdirect.account,TransactionAggregation,15,23,0,0,5,11,5,6,5,6
-Comdirect REST API,eu.wuttke.comdirect.account,BankContact,9,15,0,0,3,7,3,4,3,4
+Comdirect REST API,eu.wuttke.comdirect.account,BankContact,6,18,0,0,2,8,2,5,2,5
 Comdirect REST API,eu.wuttke.comdirect.account,AccountBalance,15,30,0,0,5,14,5,8,5,8
 Comdirect REST API,eu.wuttke.comdirect.value,PageIndex,6,11,0,0,2,5,2,3,2,3
-Comdirect REST API,eu.wuttke.comdirect.value,Amount,6,11,0,0,2,5,2,3,2,3
-Comdirect REST API,eu.wuttke.comdirect.value,CodedValue,6,11,0,0,2,5,2,3,2,3
+Comdirect REST API,eu.wuttke.comdirect.value,Amount,0,17,0,0,0,7,0,5,0,5
+Comdirect REST API,eu.wuttke.comdirect.value,CodedValue,0,17,0,0,0,7,0,5,0,5
 Comdirect REST API,eu.wuttke.comdirect.cli,ComdirectTransactionsApp,79,0,0,0,18,0,2,0,2,0
 Comdirect REST API,eu.wuttke.comdirect.login,Tokens,0,21,0,0,0,8,0,4,0,4
 Comdirect REST API,eu.wuttke.comdirect.login,InitiateLoginService,62,241,4,4,13,35,4,6,0,6
